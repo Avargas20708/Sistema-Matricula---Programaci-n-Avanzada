@@ -13,6 +13,8 @@ public static class Inicializador
         var db = scope.ServiceProvider.GetRequiredService<CampusContext>();
         if (cfg.GetValue<bool>("Demo:Sqlite"))
             await db.Database.EnsureCreatedAsync();
+        else
+            await db.Database.MigrateAsync();
         var roles = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
         foreach (var role in new[]
         {

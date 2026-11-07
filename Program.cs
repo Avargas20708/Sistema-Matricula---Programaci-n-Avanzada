@@ -11,7 +11,9 @@ builder.Services.AddDbContext<CampusContext>(o =>
     if (builder.Configuration.GetValue<bool>("Demo:Sqlite"))
         o.UseSqlite(builder.Configuration.GetConnectionString("DemoConnection"));
     else
-        o.UseSqlServer(builder.Configuration.GetConnectionString("CampusConnection"));
+        o.UseSqlServer(
+            builder.Configuration.GetConnectionString("CampusConnection"),
+            sql => sql.EnableRetryOnFailure());
 });
 builder.Services.AddIdentity<CampusUser, IdentityRole>(o =>
 {
