@@ -1,0 +1,2 @@
+@model Curso
+@{ViewData["Title"]="Detalle de curso";}<h1>@ViewData["Title"]</h1><section class="panel"><dl><dt>Código</dt><dd>@Model.Codigo</dd><dt>Nombre</dt><dd>@Model.Nombre</dd><dt>Créditos</dt><dd>@Model.Creditos</dd><dt>Carrera</dt><dd>@Model.Carrera!.Nombre</dd><dt>Estado</dt><dd>@(Model.Activo?"Activo":"Inactivo")</dd></dl><div class="form-actions"><a class="button" asp-action="Edit" asp-route-id="@Model.Id">Editar</a><a asp-action="Index">Volver al listado</a></div></section>

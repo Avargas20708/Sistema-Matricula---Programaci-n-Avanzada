@@ -1,0 +1,2 @@
+@model RegistroVm
+@{ViewData["Title"]="Agregar estudiante";}<h1>Agregar estudiante</h1><p class="subtitle">Se creará un expediente y una cuenta con rol Estudiante.</p><section class="panel form-panel"><form method="post"><div asp-validation-summary="All"></div><div class="grid"><partial name="_RegistroCampos" model="Model"/></div><p class="muted">Contraseña inicial: 8 caracteres o más, mayúscula, minúscula, número y símbolo.</p><div class="form-actions"><button>Guardar estudiante</button><a asp-action="Index">Cancelar</a></div></form></section>

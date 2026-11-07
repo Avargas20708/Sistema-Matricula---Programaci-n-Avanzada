@@ -1,0 +1,2 @@
+@model Estudiante
+@{ViewData["Title"]="Confirmar estado del expediente";}<h1>@ViewData["Title"]</h1><section class="panel form-panel"><h2>@Model.Nombre</h2><p>¿Desea @(Model.Activo?"desactivar":"reactivar") este expediente?</p><p>Se conservará su historial académico. El acceso a la cuenta se administra con la opción «Bloquear acceso».</p><form method="post"><div class="form-actions"><button class="danger">Confirmar</button><a asp-action="Index">Cancelar</a></div></form></section>

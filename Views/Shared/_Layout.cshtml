@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#176b87" />
+    <title>@ViewData["Title"] · CAMPUS</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <aside aria-label="Navegación principal">
+        <a class="brand" asp-controller="Home" asp-action="Index">CAMPUS<span>Matrícula universitaria</span></a>
+        <div class="role">@(User.IsInRole("Administrador") ? "ADMINISTRACIÓN" : User.Identity?.IsAuthenticated == true ? "ESTUDIANTE" : "BIENVENIDA")</div>
+        <nav>
+            <a asp-controller="Home" asp-action="Index">Panel principal</a>
+            <a asp-controller="Catalogo" asp-action="Index">Carreras disponibles</a>
+            @if (User.IsInRole("Administrador"))
+            {
+                <a asp-controller="Estudiantes" asp-action="Index">Estudiantes</a>
+                <a asp-controller="Carreras" asp-action="Index">Gestión de carreras</a>
+                <a asp-controller="Cursos" asp-action="Index">Cursos</a>
+                <a asp-controller="Docentes" asp-action="Index">Docentes</a>
+            }
+            else if (User.IsInRole("Estudiante"))
+            {
+                <a asp-controller="Perfil" asp-action="Index">Mi perfil</a>
+            }
+            @if (User.Identity?.IsAuthenticated != true)
+            {
+                <a asp-controller="Account" asp-action="Login">Ingresar</a>
+                <a asp-controller="Account" asp-action="Register">Crear cuenta</a>
+            }
+        </nav>
+        <div class="aside-note">Avance 2<br />Gestión académica inicial</div>
+    </aside>
+    <div class="shell">
+        <header>
+            <span>Universidad · Portal académico</span>
+            @if (User.Identity?.IsAuthenticated == true)
+            {
+                <div class="session">
+                    <span>@User.Identity.Name</span>
+                    <form asp-controller="Account" asp-action="Logout" method="post"><button class="link" type="submit">Cerrar sesión</button></form>
+                </div>
+            }
+        </header>
+        <main id="contenido" tabindex="-1">
+            @if (TempData["Ok"] != null) { <div class="notice success" role="status">@TempData["Ok"]</div> }
+            @if (TempData["Error"] != null) { <div class="notice" role="alert">@TempData["Error"]</div> }
+            @RenderBody()
+        </main>
+        <footer>Proyecto de Programación Avanzada · Ana C. Vargas Vasquez</footer>
+    </div>
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

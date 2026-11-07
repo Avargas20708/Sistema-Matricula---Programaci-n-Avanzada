@@ -1,0 +1,2 @@
+@model Carrera
+@{ViewData["Title"]="Detalle de carrera";}<h1>@ViewData["Title"]</h1><section class="panel"><dl><dt>Código</dt><dd>@Model.Codigo</dd><dt>Nombre</dt><dd>@Model.Nombre</dd><dt>Descripción</dt><dd>@Model.Descripcion</dd><dt>Estado</dt><dd>@(Model.Activa?"Activo":"Inactivo")</dd></dl><div class="form-actions"><a class="button" asp-action="Edit" asp-route-id="@Model.Id">Editar</a><a asp-action="Index">Volver al listado</a></div></section>

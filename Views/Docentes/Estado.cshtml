@@ -1,0 +1,3 @@
+@model Docente
+@{ViewData["Title"]="Confirmar cambio de estado";}
+<h1>@ViewData["Title"]</h1><section class="panel form-panel"><h2>@Model.Nombre</h2><p>¿Confirma que desea @(Model.Activo?"desactivar":"reactivar") este registro?</p><p class="muted">La desactivación conserva las relaciones y el historial. No elimina datos físicamente.</p><form method="post"><div asp-validation-summary="All"></div><div class="form-actions"><button class="danger">Confirmar</button><a asp-action="Index">Cancelar</a></div></form></section>

@@ -1,0 +1,9 @@
+@model RegistroVm
+<div class="field"><label asp-for="Identificacion">Identificación</label><input asp-for="Identificacion" autocomplete="off"/><span asp-validation-for="Identificacion"></span></div>
+<div class="field"><label asp-for="Nombre">Nombre completo</label><input asp-for="Nombre" autocomplete="off"/><span asp-validation-for="Nombre"></span></div>
+<div class="field"><label asp-for="Correo">Correo electrónico</label><input asp-for="Correo" autocomplete="off"/><span asp-validation-for="Correo"></span></div>
+<div class="field"><label asp-for="Telefono">Teléfono</label><input asp-for="Telefono" autocomplete="off"/><span asp-validation-for="Telefono"></span></div>
+<div class="field"><label asp-for="Direccion">Dirección</label><input asp-for="Direccion" autocomplete="off"/><span asp-validation-for="Direccion"></span></div>
+<div class="field"><label asp-for="CarreraId">Carrera</label><select asp-for="CarreraId" asp-items="ViewBag.Carreras"><option value="">Seleccione una carrera</option></select><span asp-validation-for="CarreraId"></span></div>
+<div class="field"><label asp-for="Password">Contraseña</label><input asp-for="Password" autocomplete="new-password"/><span asp-validation-for="Password"></span></div>
+<div class="field"><label asp-for="ConfirmPassword">Confirmar contraseña</label><input asp-for="ConfirmPassword" autocomplete="new-password"/><span asp-validation-for="ConfirmPassword"></span></div>
